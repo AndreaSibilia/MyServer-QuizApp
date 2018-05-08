@@ -53,22 +53,14 @@ the html code there are the scripts that provide the link to the respective js f
 - the button that allows to check the user's answer.
 Some minor changes occur also in the <header>; the main title is turned into "UCL Quiz App" and the top-right menu contains the links to the documentation.  
 
-## WebApp: the app struture
+## WebApp: the app structure
 
 WebApp has a structure which is very similar to the QuizApp one, since the two apps has been developed by using the same criteria. Like the QuizApp, WebApp 
-<<<<<<< HEAD
-shows exactly the same structure of the top-right menu located in the "header", with the links to the documentation. The left-side menu, which compose the 
+shows exactly the same structure of the top-right menu located in the header, with the links to the documentation. The left-side menu, which compose the 
 first part of the body, contains the buttons that add the functionalities to the app; the first one allows to open the "Question Form" to create new questions.
 The html file of the form is located in the "www" folder, together with the index.html. The second option allows to load the points of interest already stored
 in the database by using the loadPointData() located into a .js file; the script that makes reference to this function is located below in the html code. 
 The main interface -between the "main" tags- is composed of the Leaflet map only. 
-=======
-shows exactly the same structure of the top-right menu located in the <header>, with the links to the documentation. The left-side menu, which compose the 
-first part of the body, contains the buttons that add the functionalities to the app; the first one allows to open the "Question Form" to create new questions.
-The html file of the form is located in the "www" folder, together with the index.html. The second option allows to load the points of interest already stored
-in the database by using the loadPointData() located into a .js file; the script that makes reference to this function is located below in the html code. 
-The main interface -between the <main> tags- is composed of the Leaflet map only. 
->>>>>>> 1cbb2ff61509bfcdb800af312bc09afad6e68204
 
 ## The server
 
@@ -98,8 +90,4 @@ NB: QuizApp requires only the server (NodeJSserver.js).
 
 ## Further information
 
-<<<<<<< HEAD
 The following [link]( https://www.dropbox.com/s/od2t6g29cekp8u6/Web%26Mobile-Report.pdf?dl=0 ) provides further information about the development of the apps.
-=======
-The following [link](  ) provides further information about the development of the apps.
->>>>>>> 1cbb2ff61509bfcdb800af312bc09afad6e68204
