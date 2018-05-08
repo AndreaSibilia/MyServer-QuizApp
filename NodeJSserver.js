@@ -1,4 +1,7 @@
-// express is the server that forms part of the nodejs program
+// The script is mainly derived from the tutorials' code
+
+
+// express is the server that forms part of the nodejs program (from httpServer.js tutorial 5 Web&Mobile)
 var express = require('express');
 var path = require("path");
 var app = express();
@@ -8,13 +11,13 @@ var pg = require('pg');
 
 // add an http server to serve files to the Edge browser 
 // due to certificate issues it rejects the https files if they are not
-// directly called in a typed URL
+// directly called in a typed URL (from httpServer.js tutorial 5 Web&Mobile)
 var http = require('http');
 var httpServer = http.createServer(app); 
 httpServer.listen(4480);
 
 
-// adding functionality to allow cross-domain queries when PhoneGap is running a server
+// adding functionality to allow cross-domain queries when PhoneGap is running a server (from httpServer.js tutorial 5 Web&Mobile)
 app.use(function(req, res, next) {
 	res.setHeader("Access-Control-Allow-Origin", "*");
 	res.setHeader("Access-Control-Allow-Headers", "X-Requested-With");
@@ -22,14 +25,14 @@ app.use(function(req, res, next) {
 	next();
 });
 
-
+// make a body-parser to acces the GeoJSON (from tutorial 6 Web&Mobile)
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({
 	extended: true
 }));
 app.use(bodyParser.json());
 	
-// adding functionality to log the requests
+// adding functionality to log the requests (from httpServer.js tutorial 5 Web&Mobile)
 app.use(function (req, res, next) {
 	var filename = path.basename(req.url);
 	var extension = path.extname(filename);
@@ -42,9 +45,9 @@ app.get('/',function (req,res) {
 });
 
 
-// read in the file and force it to be a string by adding “” at the beginning
+// read in the file and force it to be a string by adding “” at the beginning (from httpServer.js tutorial 5 Web&Mobile)
 var configtext = ""+fs.readFileSync("/home/studentuser/certs/postGISConnection.js");
-// now convert the configruation file into the correct format -i.e. a name/value pair array
+// now convert the configruation file into the correct format -i.e. a name/value pair array (from httpServer.js tutorial 5 Web&Mobile)
 var configarray = configtext.split(",");
 var config = {};
 
@@ -54,7 +57,7 @@ config[split[0].trim()] = split[1].trim();
 }
 
 
-// connecting to PostreSQL
+// connecting to PostreSQL (from httpServer.js tutorial 5 Web&Mobile)
 var pool = new pg.Pool(config);
 //pool.connect();
 app.get('/postgistest', function (req,res) {
@@ -74,7 +77,7 @@ app.get('/postgistest', function (req,res) {
 	});
 });
 
-// uploading file from the question form to the database
+// uploading file from the question form to the database (adapted form tutorial 6 Web&Mobile)
 app.post('/uploadData',function(req,res){
        // note that we are using POST here as we are uploading data
        // so the parameters form part of the BODY of the request rather than the
@@ -102,7 +105,7 @@ app.post('/uploadData',function(req,res){
 	});
 
 	
-// uploading file from the quiz to the database
+// uploading file from the quiz to the database (adapted form tutorial 6 Web&Mobile)
 app.post('/checkAnswer',function(req,res){
        // note that we are using POST here as we are uploading data
        // so the parameters form part of the BODY of the request rather than the
@@ -129,7 +132,7 @@ app.post('/checkAnswer',function(req,res){
 		}})
 	});
 
-	
+	// code adapted from  tutorial 6 Web&Mobile. The function extract the data as GeoJSON
 	app.get('/getGeoJSON/:tablename/:geomcolumn', function (req,res) {
 		pool.connect(function(err,client,done) {
 			if(err){
@@ -183,11 +186,7 @@ app.post('/checkAnswer',function(req,res){
 	});
 	
 	
-	
-	
-	
-	
-
+// code from httpServer.js tutorial 5 Web&Mobile
 // the / indicates the path that you type into the server - in this case, what happens when you type in:  http://developer.cege.ucl.ac.uk:32560/xxxxx/xxxxx
 app.get('/:name1', function (req, res) {
 // run some server-side code
@@ -199,6 +198,7 @@ res.sendFile(__dirname + '/'+req.params.name1);
 });
 
 
+// code from httpServer.js tutorial 5 Web&Mobile
 // the / indicates the path that you type into the server - in this case, what happens when you type in:  http://developer.cege.ucl.ac.uk:32560/xxxxx/xxxxx
 app.get('/:name1/:name2', function (req, res) {
 // run some server-side code
@@ -210,6 +210,7 @@ res.sendFile(__dirname + '/'+req.params.name1+'/'+req.params.name2);
 });
 
 
+// code from httpServer.js tutorial 5 Web&Mobile
 // the / indicates the path that you type into the server - in this case, what happens when you type in:  http://developer.cege.ucl.ac.uk:32560/xxxxx/xxxxx/xxxx
 app.get('/:name1/:name2/:name3', function (req, res) {
 	// run some server-side code
@@ -219,6 +220,7 @@ app.get('/:name1/:name2/:name3', function (req, res) {
 		res.sendFile(__dirname + '/'+req.params.name1+'/'+req.params.name2+ '/'+req.params.name3);
 });
 
+// code from httpServer.js tutorial 5 Web&Mobile
 // the / indicates the path that you type into the server - in this case, what happens when you type in:  http://developer.cege.ucl.ac.uk:32560/xxxxx/xxxxx/xxxx
 app.get('/:name1/:name2/:name3/:name4', function (req, res) {
 	// run some server-side code
