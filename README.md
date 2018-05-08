@@ -39,7 +39,7 @@ Google Chrome Version 66.0.3359.139, Mozilla Firefox version 59.0.3 and Safari v
 ## Template and API
 
 Both the app are developed by using the [Material Design Dashboard template]( https://getmdl.io/templates/index.html ). 
-For the map, the Leaflet API is used, version 1.3.0.
+For the map, the [Leaflet API]( https://leafletjs.com/ ) is used, version 1.3.0.
 
 ## QuizApp: the app structure
 
@@ -68,14 +68,26 @@ The NodeJSserver.js file manages the upload/download of data. In the terminal, w
 /home/studentuser/code. A copy of the file is located into the "MyServer-QuizApp" folder which is the GitHub repository. However, the server is not able to 
 manage the interactions between the apps and the database from this folder. For this reason, the NodeJSserver.js must be started from the "code" folder -/home/studentuser/code path-.
 If the user wants to start the server, they need to type the following commands in the console:
-- cd /home/studentuser/code
-- node NodeJSserver.js
+
+```
+cd /home/studentuser/code
+node NodeJSserver.js
+```
+
 If the user wants to start both the server and WebApp, they need to start the server in background and then the Phonegap server from the app's folder:
-- cd /home/studentuser/code
-- node NodeJSserver.js &
-- cd /home/studentuser/code/WebApp/ucesibi
-- sudo su --> type the password (they need to access as superuser to start the phonegap server)
-- phonegap server
+
+```
+cd /home/studentuser/code
+node NodeJSserver.js &
+cd /home/studentuser/code/WebApp/ucesibi
+sudo su --> type the password (they need to access as superuser to start the phonegap server)
+phonegap server
+```
+
 At this point both the server and WebApp are running, therefore the user can create new questions and upload them to the database.
 
 NB: QuizApp requires only the server (NodeJSserver.js).
+
+## Further information
+
+The following [link](  ) provides further information about the development of the apps.
